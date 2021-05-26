@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_241" class="java.beans.XMLDecoder">
+ <object class="settings.Properties">
+  <void property="ip">
+   <string>127.0.0.1</string>
+  </void>
+  <void property="port">
+   <string>5402</string>
+  </void>
+    <void property="valuesTransmittionPace">
+   <int>10</int>
+  </void>
+  <void property="aileron">
+   <int>1</int>
+  </void>
+  <void property="elevator">
+   <float>2</float>
+  </void>
+  <void property="rudder">
+   <float>3</float>
+  </void>
+  <void property="throttle">
+   <float>4</float>
+  </void>
+    <void property="Z">
+   <double>5</double>
+  </void>
+    <void property="Y">
+   <double>6</double>
+  </void>
+    <void property="AK">
+   <double>7</double>
+  </void>
+    <void property="roll">
+   <float>8</float>
+  </void>
+    <void property="pitch">
+   <float>9</float>
+  </void>
+    <void property="yaw">
+   <float>10</float>
+  </void>
+ </object>
+</java>
