@@ -9,34 +9,34 @@ public class ZScore implements TimeSeriesAnomalyDetector {
     HashMap<String, Float> colThresholdMap = new HashMap<>();
 
     public void learnNormal(TimeSeries ts){
-        TimeSeries.col[] learnFeatures = ts.getFeatures();
+        TimeSeries.col[] featuresLearner = ts.getFeatures();
         float maxZScore, currentZScore;
-        for(int i=0; i < learnFeatures.length; i++){
+        for(int i=0; i < featuresLearner.length; i++){
             maxZScore = Float.MIN_VALUE;
-            for(int j=0; i < learnFeatures[i].parameters.size(); j++){
-                currentZScore = calculateZScore(learnFeatures[i].getParameters(), j);
+            for(int j=0; i < featuresLearner[i].parameters.size(); j++){
+                currentZScore = calculateZScore(featuresLearner[i].getParameters(), j);
                 if(currentZScore > maxZScore){
                     maxZScore = currentZScore;
                 }
             }
-            colThresholdMap.put(learnFeatures[i].getName(), maxZScore);
+            colThresholdMap.put(featuresLearner[i].getName(), maxZScore);
         }
     }
     public List<AnomalyReport> detect(TimeSeries ts){
-        TimeSeries.col[] detectFeatures = ts.getFeatures();
+        TimeSeries.col[] featuresDetector = ts.getFeatures();
         List<AnomalyReport> liveReports = new ArrayList<AnomalyReport>();
         float maxZScore, currentZScore;
-        for(int i=0; i < detectFeatures.length; i++){
+        for(int i=0; i < featuresDetector.length; i++){
             maxZScore = Float.MIN_VALUE;
-            for(int j=0; i < detectFeatures[i].parameters.size(); j++){
-                currentZScore = calculateZScore(detectFeatures[i].getParameters(), j);
+            for(int j=0; i < featuresDetector[i].parameters.size(); j++){
+                currentZScore = calculateZScore(featuresDetector[i].getParameters(), j);
                 if(currentZScore > maxZScore){
                     maxZScore = currentZScore;
                 }
             }
-            if(colThresholdMap.containsKey(detectFeatures[i].getName())){
-                if(colThresholdMap.get(detectFeatures[i].getName()) > maxZScore){
-                    AnomalyReport report= new AnomalyReport("Anomaly at: " + detectFeatures[i].getName(),
+            if(colThresholdMap.containsKey(featuresDetector[i].getName())){
+                if(colThresholdMap.get(featuresDetector[i].getName()) > maxZScore){
+                    AnomalyReport report= new AnomalyReport("Anomaly at: " + featuresDetector[i].getName(),
                             i+1); //add a new detected object
                     liveReports.add(report);
                 }

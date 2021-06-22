@@ -43,8 +43,7 @@ public class FlightProperties implements Serializable{
 	}
 	
 	
-	//	Getters & Setters
-
+	//	Getters && Setters
 
 	public String getIp() {
 		return ip;

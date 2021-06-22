@@ -10,7 +10,7 @@ import java.io.FileOutputStream;
 
 public class XMLHandler {
 
-	// creating Properties object from xml file
+	// Object Properties creator from XML file
 	public static FlightProperties readSettingObject(String properties) throws FileNotFoundException {
 
 		XMLDecoder xmlDecoder = new XMLDecoder(new FileInputStream(new File(properties)));
@@ -20,8 +20,8 @@ public class XMLHandler {
 
 	}
 
-	// writing a Properties object into xml file
-	public static void writeSettingObject(String file, FlightProperties obj) throws FileNotFoundException {
+	// Writing object Properties into xml file
+	public static void writeObjectSetting(String file, FlightProperties obj) throws FileNotFoundException {
 		XMLEncoder xmlEncoder = new XMLEncoder(new FileOutputStream(new File(file)));
 		xmlEncoder.writeObject(obj);
 		xmlEncoder.flush();
